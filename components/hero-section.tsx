@@ -17,15 +17,15 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    // Set canvas size
+    const canvasEl = canvas as HTMLCanvasElement
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      canvasEl.width = window.innerWidth
+      canvasEl.height = window.innerHeight
     }
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
-    // Neural network nodes
     class Node {
       x: number
       y: number
@@ -34,8 +34,8 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
       radius: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * canvasEl.width
+        this.y = Math.random() * canvasEl.height
         this.vx = (Math.random() - 0.5) * 0.5
         this.vy = (Math.random() - 0.5) * 0.5
         this.radius = Math.random() * 2 + 1
@@ -45,8 +45,8 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
         this.x += this.vx
         this.y += this.vy
 
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1
+        if (this.x < 0 || this.x > canvasEl.width) this.vx *= -1
+        if (this.y < 0 || this.y > canvasEl.height) this.vy *= -1
       }
 
       draw() {
@@ -58,25 +58,21 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
       }
     }
 
-    // Create nodes
     const nodes: Node[] = []
     const nodeCount = 100
     for (let i = 0; i < nodeCount; i++) {
       nodes.push(new Node())
     }
 
-    // Animation loop
     const animate = () => {
       ctx.fillStyle = 'rgba(4, 15, 12, 0.1)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillRect(0, 0, canvasEl.width, canvasEl.height)
 
-      // Update and draw nodes
       nodes.forEach(node => {
         node.update()
         node.draw()
       })
 
-      // Draw connections
       nodes.forEach((nodeA, i) => {
         nodes.slice(i + 1).forEach(nodeB => {
           const dx = nodeA.x - nodeB.x
@@ -108,7 +104,6 @@ export function HeroSection({ onScrollDown }: HeroSectionProps) {
   const skills = {
     Languages: ["Python", "C++", "Go", "C#"],
     Web: ["HTML", "CSS", "JavaScript", "React"],
-    Graphics: ["OpenGL (basic)"],
     ML: ["NumPy", "Pandas", "scikit-learn"]
   }
 

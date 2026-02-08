@@ -12,37 +12,37 @@ const projects = [
       "A lightweight neural network library built from scratch in Python and NumPy, designed as both an educational resource and a practical implementation of deep learning fundamentals. Features modular layers to support flexible model construction with numerical stability and efficiency through vectorized NumPy operations.",
     image: "/neural-network-deep-learning-visualization-dark-th.jpg",
     technologies: ["Python", "NumPy", "Git"],
-    link: "https://github.com/syedadeed",
+    link: "https://github.com/Atomic-Coder-ONE/DAM-main.git",
   },
   {
     id: 2,
-    title: "OpenGL Examples",
-    description: "Graphics Programming",
+    title: "Face Recognition System",
+    description: "Detects and identifies human faces in images or real-time video",
     longDescription:
-      "An educational resource built from scratch in C to illustrate core graphics concepts and provide reference implementations of rendering techniques for game development. Designed and implemented a platform-independent API layer to create windows and manage OpenGL contexts, ensuring portability across operating systems.",
-    image: "/3d-graphics-rendering-opengl-shader-visualization-.jpg",
-    technologies: ["C", "OpenGL", "GLM", "EGL", "Glad", "Git"],
-    link: "https://github.com/syedadeed",
+      "A face recognition system built with OpenCV is a computer-vision setup that detects a human face in an image or video and then identifies whose face it is by comparing it with stored data",
+    image: "/facerecog.jpg",
+    technologies: ["OpenCV", "Python", "Machine Learning concepts", "Image processing techniques",],
+    link: "https://github.com/Atomic-Coder-ONE/Face-Reco-Sysytem.git",
   },
   {
     id: 3,
-    title: "Wayland Client",
-    description: "Low-level Graphics",
+    title: "Space Shooter ",
+    description: "3D Game using Unity Engine",
     longDescription:
-      "A comprehensive guide and implementation showcasing how to create a Wayland client from scratch using low-level APIs. Demonstrates the complete pipeline from establishing a Wayland connection to rendering graphics using OpenGL, providing deep insights into Linux display server architecture.",
-    image: "/wayland-client-simple-window-ui.jpg",
-    technologies: ["C", "Wayland", "OpenGL", "EGL", "Git"],
-    link: "https://github.com/syedadeed",
+      "A 3D space shooter game built using the Unity engine. Features player movement, enemy AI, shooting mechanics, and particle effects.",
+    image: "/spaceshooter.jpg",
+    technologies: ["Unity", "C#", "Game Development"],
+    link: "https://github.com/Atomic-Coder-ONE/Space-Shooter.git",
   },
   {
     id: 4,
-    title: "DSL",
-    description: "Data Structures Library",
+    title: "Click Through Rate Prediction",
+    description: "Predicts the likelihood of a user clicking on an advertisement",
     longDescription:
-      "A comprehensive data structures library written for C, implementing all common data structures with a modular design featuring separate header files for each data structure. Includes well-written unit tests with full code coverage, serving as both a practical utility and educational reference.",
-    image: "/data-structures-algorithms-visualization-binary-tr.jpg",
-    technologies: ["C", "Git"],
-    link: "https://github.com/syedadeed",
+      "A machine learning model that predicts click-through rates for online advertisements. Uses historical data and user behavior patterns to estimate the probability of a user clicking on an ad.",
+    image: "/clickthroughrate.jpg",
+    technologies: ["Python", "Pandas", "Scikit-learn", "Machine Learning"],
+    link: "https://github.com/Atomic-Coder-ONE/Click-Through-Rate-Prediction.git",
   },
 ]
 
@@ -75,9 +75,11 @@ export function ProjectsSection({
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    const canvasEl = canvas as HTMLCanvasElement
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      canvasEl.width = window.innerWidth
+      canvasEl.height = window.innerHeight
     }
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
@@ -90,8 +92,8 @@ export function ProjectsSection({
       radius: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * canvasEl.width
+        this.y = Math.random() * canvasEl.height
         this.vx = (Math.random() - 0.5) * 0.4
         this.vy = (Math.random() - 0.5) * 0.4
         this.radius = Math.random() * 1.5 + 0.5
@@ -101,8 +103,8 @@ export function ProjectsSection({
         this.x += this.vx
         this.y += this.vy
 
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1
+        if (this.x < 0 || this.x > canvasEl.width) this.vx *= -1
+        if (this.y < 0 || this.y > canvasEl.height) this.vy *= -1
       }
 
       draw() {
@@ -122,7 +124,7 @@ export function ProjectsSection({
 
     const animate = () => {
       ctx.fillStyle = 'rgba(4, 15, 12, 0.1)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillRect(0, 0, canvasEl.width, canvasEl.height)
 
       nodes.forEach(node => {
         node.update()

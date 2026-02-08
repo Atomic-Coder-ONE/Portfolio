@@ -13,9 +13,11 @@ export function ContactSection() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    const canvasEl = canvas as HTMLCanvasElement
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      canvasEl.width = window.innerWidth
+      canvasEl.height = window.innerHeight
     }
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
@@ -29,8 +31,8 @@ export function ContactSection() {
       radius: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * canvasEl.width
+        this.y = Math.random() * canvasEl.height
         this.vx = (Math.random() - 0.5) * 0.3
         this.vy = (Math.random() - 0.5) * 0.3
         this.radius = Math.random() * 1.5 + 0.5
@@ -40,8 +42,8 @@ export function ContactSection() {
         this.x += this.vx
         this.y += this.vy
 
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1
+        if (this.x < 0 || this.x > canvasEl.width) this.vx *= -1
+        if (this.y < 0 || this.y > canvasEl.height) this.vy *= -1
       }
 
       draw() {
@@ -60,7 +62,7 @@ export function ContactSection() {
 
     const animate = () => {
       ctx.fillStyle = 'rgba(4, 15, 12, 0.1)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillRect(0, 0, canvasEl.width, canvasEl.height)
 
       particles.forEach(particle => {
         particle.update()
@@ -121,7 +123,7 @@ export function ContactSection() {
         </p>
 
         <a
-          href="mailto:priyeshpandey@protonmail.com"
+          href="mailto:priyeshp667@gmail.com"
           className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-green-500 text-white px-8 py-4 rounded-lg text-lg font-medium hover:from-emerald-400 hover:to-green-400 transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] mb-12"
         >
           <Mail className="w-5 h-5" />
@@ -130,7 +132,7 @@ export function ContactSection() {
 
         <div className="flex justify-center gap-6">
           <a
-            href="https://github.com/priyeshpandey"
+            href="https://github.com/Atomic-Coder-ONE"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-emerald-950/50 backdrop-blur-sm border border-emerald-500/30 text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/70 hover:border-emerald-400 transition-all hover:shadow-[0_0_15px_rgba(34,197,94,0.3)]"
@@ -139,7 +141,7 @@ export function ContactSection() {
             <Github className="w-6 h-6" />
           </a>
           <a
-            href="https://linkedin.com/in/priyesh-pandey"
+            href="https://www.linkedin.com/in/priyesh-pandey-961b67312/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-emerald-950/50 backdrop-blur-sm border border-emerald-500/30 text-emerald-400 hover:text-emerald-300 hover:bg-emerald-950/70 hover:border-emerald-400 transition-all hover:shadow-[0_0_15px_rgba(34,197,94,0.3)]"
