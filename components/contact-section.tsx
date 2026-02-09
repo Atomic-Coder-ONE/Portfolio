@@ -151,7 +151,7 @@ export function ContactSection() {
           </a>
         </div>
 
-        <p className="mt-16 text-sm text-gray-400/60 font-mono">© 2026 Priyesh Kumar Pandey • Built with passion & AI</p>
+        <p className="mt-16 text-sm text-gray-400/60 font-mono">© 2026 Priyesh Kumar Pandey </p>
       </div>
     </section>
   )

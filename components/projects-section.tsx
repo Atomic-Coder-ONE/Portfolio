@@ -169,20 +169,24 @@ export function ProjectsSection({
       if (e.deltaY > 0) {
         if (currentProject < projects.length - 1) {
           e.preventDefault()
+          e.stopPropagation()
           lastScrollTime.current = now
           onIndexChange(currentProject + 1)
         } else {
           e.preventDefault()
+          e.stopPropagation()
           lastScrollTime.current = now
           onComplete()
         }
       } else {
         if (currentProject > 0) {
           e.preventDefault()
+          e.stopPropagation()
           lastScrollTime.current = now
           onIndexChange(currentProject - 1)
         } else {
           e.preventDefault()
+          e.stopPropagation()
           lastScrollTime.current = now
           onGoBack()
         }
